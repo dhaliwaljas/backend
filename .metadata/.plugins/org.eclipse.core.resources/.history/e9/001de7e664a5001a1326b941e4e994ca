@@ -1,0 +1,36 @@
+package com.weaver.taskservice.models.request;
+
+@Getter
+public class NewTask {
+	private String title;
+	private String description;
+	private double creditValue;
+	private String createdBy;
+	private String assignedBy;
+	private String assignedTo;
+	private long initiallyDueAt;
+	private long maxDueAt;
+	private long currentlyDueAt;
+	private long completedAt;
+	private long createdAt;
+	private long updatedAt;
+
+	public NewTask(String title, String description, double creditValue, String createdBy, String assignedBy,
+			String assignedTo, long initiallyDueAt, long maxDueAt, long currentlyDueAt, long completedAt,
+			long createdAt, long updatedAt) {
+		super();
+		this.title = title;
+		this.description = description;
+		this.creditValue = creditValue;
+		this.createdBy = createdBy;
+		this.assignedBy = assignedBy;
+		this.assignedTo = assignedTo;
+		this.initiallyDueAt = initiallyDueAt;
+		this.maxDueAt = maxDueAt;
+		this.currentlyDueAt = currentlyDueAt;
+		this.completedAt = completedAt;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+	}
+
+}

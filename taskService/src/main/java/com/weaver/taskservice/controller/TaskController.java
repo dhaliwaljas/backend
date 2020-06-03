@@ -1,0 +1,64 @@
+package com.weaver.taskservice.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.weaver.taskservice.models.Task;
+import com.weaver.taskservice.models.converters.TaskConverter;
+import com.weaver.taskservice.models.request.NewTask;
+import com.weaver.taskservice.repository.TaskRepository;
+
+@RestController
+@RequestMapping("/rest/tasks")
+public class TaskController {
+
+	@Autowired
+	private TaskRepository taskRepo;
+
+	public TaskController(TaskRepository taskRepo) {
+		this.taskRepo = taskRepo;
+	}
+
+//	Get all tasks
+	@GetMapping("/all")
+	public String getAll() {
+		taskRepo.findAll();
+		return "==> Get all tasks";
+	}
+
+//	Find task by id
+	@GetMapping("/{id}")
+	public String getTask(@PathVariable("id") String id) {
+		taskRepo.findById(id);
+		return "==> Task id: " + id;
+	}
+
+//	Add new task
+	@PostMapping(path = "/newtask", consumes = "application/json")
+	public String createTask(@RequestBody NewTask newTask) {
+		taskRepo.save(TaskConverter.newTaskToTask(newTask));
+		return "==> New Task: " + newTask.toString();
+	}
+
+//	Delete task
+	@DeleteMapping("/{id}")
+	public String deleteTask(@PathVariable String id) {
+		taskRepo.deleteById(id);
+
+		return "==> Task deleted with id: " + id;
+	}
+
+//	Edit task
+	@PutMapping(consumes = { "application/json" })
+	public String editTask(@RequestBody Task task) {
+		taskRepo.save(task);
+		return "==> Edited task: " + task.toString();
+	}
+}

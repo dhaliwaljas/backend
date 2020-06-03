@@ -1,0 +1,84 @@
+package com.weaver.taskservice.models.request;
+
+public class NewTask {
+	private String title;
+	private String description;
+	private double creditValue;
+	private String assignedTo;
+	private long maxDueAt;
+	private long currentlyDueAt;
+	
+	public NewTask() {
+		super();
+	}
+
+	public NewTask(String title, String description, double creditValue, String assignedTo, long maxDueAt,
+			long currentlyDueAt) {
+		super();
+		this.title = title;
+		this.description = description;
+		this.creditValue = creditValue;
+		this.assignedTo = assignedTo;
+		this.maxDueAt = maxDueAt;
+		this.currentlyDueAt = currentlyDueAt;
+	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "NewTask [title=" + title + ", description=" + description + ", creditValue=" + creditValue
+				+ ", assignedTo=" + assignedTo + ", maxDueAt=" + maxDueAt + ", currentlyDueAt=" + currentlyDueAt + "]";
+	}
+
+
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public double getCreditValue() {
+		return creditValue;
+	}
+
+	public void setCreditValue(double creditValue) {
+		this.creditValue = creditValue;
+	}
+
+	public String getAssignedTo() {
+		return assignedTo;
+	}
+
+	public void setAssignedTo(String assignedTo) {
+		this.assignedTo = assignedTo;
+	}
+
+	public long getMaxDueAt() {
+		return maxDueAt;
+	}
+
+	public void setMaxDueAt(long maxDueAt) {
+		this.maxDueAt = maxDueAt;
+	}
+
+	public long getCurrentlyDueAt() {
+		return currentlyDueAt;
+	}
+
+	public void setCurrentlyDueAt(long currentlyDueAt) {
+		this.currentlyDueAt = currentlyDueAt;
+	}
+
+}
